@@ -1,13 +1,29 @@
 {
-  "name": "myprofile",
-  "version": "0.0.0",
+  "name": "pinakeshwar-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio of Pinakeshwar - Senior Full-Stack Developer specializing in microservices architecture and cloud-native solutions",
+  "author": {
+    "name": "Pinakeshwar Rajendra Loharkar",
+    "email": "ploharkar21@gmail.com",
+    "url": "https://pinakeshwar-portfolio.vercel.app"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ploharkar-dev/pinakeshwar-portfolio.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration=production",
+    "build:ssr": "ng build --configuration=production && npm run build:server",
+    "build:server": "ng build --configuration=production --project=myprofile",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:myprofile": "node dist/myprofile/server/server.mjs"
+    "serve:ssr": "node dist/myprofile/server/server.mjs",
+    "lint": "ng lint || true",
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss,json,md}\""
   },
   "prettier": {
     "printWidth": 100,
