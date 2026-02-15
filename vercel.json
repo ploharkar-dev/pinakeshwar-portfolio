@@ -42,7 +42,7 @@
       ]
     },
     {
-      "source": "/main-*.js",
+      "source": "/main-[^/]*\\.js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "source": "/styles-*.css",
+      "source": "/styles-[^/]*\\.css",
       "headers": [
         {
           "key": "Cache-Control",
