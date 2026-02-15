@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +9,23 @@ import { CommonModule } from '@angular/common';
 })
 export class Navbar implements OnInit {
   activeSection: string = 'home';
+  private isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
-    this.detectActiveSection();
-    window.addEventListener('scroll', () => this.detectActiveSection());
+    if (this.isBrowser) {
+      this.detectActiveSection();
+    }
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    if (this.isBrowser) {
+      this.detectActiveSection();
+    }
   }
 
   setActive(section: string) {

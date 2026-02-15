@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-lg" style="background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 50%, #0f172a 100%); border-bottom: 2px solid #00d4d4; backdrop-filter: blur(10px);" #navbar>
   <div class="container">
     <a class="navbar-brand fw-bold" href="#home" style="font-size: 1.5rem; color: #00d4d4; letter-spacing: 1px; text-transform: uppercase; font-weight: 900;">
-      <i class="bi bi-lightning-fill" style="color: #00d4d4; margin-right: 8px; animation: glow 2s ease-in-out infinite;"></i> Pinakeshwar
+      <i class="bi bi-code-slash" style="color: #00d4d4; margin-right: 8px; animation: glow 2s ease-in-out infinite;"></i> Pinakeshwar
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="filter: invert(1);">
       <span class="navbar-toggler-icon"></span>
@@ -26,9 +26,12 @@
         <li class="nav-item">
           <a class="nav-link fw-600" [ngClass]="{'active': activeSection === 'contact'}" href="#contact" (click)="setActive('contact')">Contact</a>
         </li>
-        <li class="nav-item ms-2">
-          <a class="nav-link fw-bold px-3 py-2" href="https://linkedin.com/in/pinakeshwar-loharkar" target="_blank" style="color: #00d4d4; border: 2px solid #00d4d4; border-radius: 25px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#00d4d4'; this.style.color='#1a1a2e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00d4d4';">
-            <i class="bi bi-linkedin"></i>
+        <li class="nav-item ms-3 d-flex gap-2">
+          <a class="nav-link fw-bold px-3 py-2" href="https://www.linkedin.com/in/omkarloharkar/" target="_blank" style="color: #0A66C2; border: 2px solid #0A66C2; border-radius: 25px; transition: all 0.3s ease; font-size: 1.1rem;" onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#0A66C2';">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a class="nav-link fw-bold px-3 py-2" href="https://github.com/ploharkar-dev/" target="_blank" style="color: #e0e7ff; border: 2px solid #e0e7ff; border-radius: 25px; transition: all 0.3s ease; font-size: 1.1rem;" onmouseover="this.style.backgroundColor='#e0e7ff'; this.style.color='#1a1a2e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#e0e7ff';">
+            <i class="bi bi-github"></i> GitHub
           </a>
         </li>
       </ul>

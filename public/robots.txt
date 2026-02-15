@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: 
+
+Sitemap: https://pinakeshwar-portfolio.vercel.app/sitemap.xml
+
+User-agent: *
+Allow: /
+Crawl-delay: 0
