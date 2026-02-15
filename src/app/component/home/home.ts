@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Introduction } from "../introduction/introduction";
 import { Experience } from "../experience/experience";
 import { Education } from "../education/education";
@@ -13,6 +13,7 @@ import { Footer } from "../footer/footer";
   imports: [Introduction, Experience, ProjectsComponent, Education, Awards, Info, Contact, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
 

@@ -6,18 +6,18 @@
       class="navbar-toggler"
       type="button"
       (click)="toggleMenu()"
-      [attr.aria-expanded]="menuOpen"
+      [attr.aria-expanded]="menuOpen()"
       aria-controls="navbarNav"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-menu" [class.open]="menuOpen" id="navbarNav">
+    <div class="navbar-menu" [class.open]="menuOpen()" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'home' }"
+            [ngClass]="{ active: activeSection() === 'home' }"
             href="#introduction"
             (click)="setActive('home'); closeMenu()"
             >Home</a
@@ -26,7 +26,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'experience' }"
+            [ngClass]="{ active: activeSection() === 'experience' }"
             href="#experience"
             (click)="setActive('experience'); closeMenu()"
             >Experience</a
@@ -35,7 +35,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'projects' }"
+            [ngClass]="{ active: activeSection() === 'projects' }"
             href="#projects"
             (click)="setActive('projects'); closeMenu()"
             >Projects</a
@@ -44,7 +44,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'education' }"
+            [ngClass]="{ active: activeSection() === 'education' }"
             href="#education"
             (click)="setActive('education'); closeMenu()"
             >Education</a
@@ -53,7 +53,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'awards' }"
+            [ngClass]="{ active: activeSection() === 'awards' }"
             href="#awards"
             (click)="setActive('awards'); closeMenu()"
             >Awards</a
@@ -62,7 +62,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [ngClass]="{ active: activeSection === 'contact' }"
+            [ngClass]="{ active: activeSection() === 'contact' }"
             href="#contact"
             (click)="setActive('contact'); closeMenu()"
             >Contact</a
