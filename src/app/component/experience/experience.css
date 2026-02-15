@@ -1,5 +1,5 @@
 .experience-card {
-  border-left: 4px solid #0d6efd !important;
+  border-left: 4px solid #00d4d4 !important;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -10,34 +10,34 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background: linear-gradient(180deg, #0d6efd 0%, transparent 100%);
+  background: linear-gradient(180deg, #00d4d4 0%, transparent 100%);
   width: 4px;
   border-radius: 4px 0 0 4px;
 }
 
 .experience-card:hover {
-  border-left-color: #198754 !important;
+  border-left-color: #7c3aed !important;
   transform: translateX(5px);
-  box-shadow: -5px 10px 30px rgba(13, 110, 253, 0.15) !important;
+  box-shadow: -5px 10px 30px rgba(0, 212, 212, 0.15) !important;
 }
 
 .experience-card:hover::before {
-  background: linear-gradient(180deg, #198754 0%, transparent 100%);
+  background: linear-gradient(180deg, #7c3aed 0%, transparent 100%);
 }
 
 .card-title {
-  color: #0d6efd;
+  color: #00d4d4;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
 .card-title:hover {
-  color: #0b5ed7;
+  color: #7c3aed;
 }
 
 .badge {
-  background-color: #0d6efd !important;
-  color: white !important;
+  background-color: #00d4d4 !important;
+  color: #1a1a2e !important;
   padding: 0.5rem 1rem;
   font-weight: 600;
   border-radius: 25px;
@@ -45,9 +45,9 @@
 }
 
 .badge:hover {
-  background-color: #0b5ed7 !important;
+  background-color: #7c3aed !important;
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 212, 212, 0.3);
 }
 
 .list-unstyled li {
@@ -57,12 +57,12 @@
 }
 
 .list-unstyled li:hover {
-  color: #0d6efd;
+  color: #00d4d4;
   padding-left: 0.5rem;
 }
 
 .bi-check-circle {
-  color: #198754;
+  color: #00d4d4;
   font-size: 1rem;
 }
 
@@ -75,9 +75,9 @@
 }
 
 .experience-card .badge:hover {
-  background-color: #0d6efd !important;
-  color: white !important;
-  border-color: #0d6efd !important;
+  background-color: #00d4d4 !important;
+  color: #1a1a2e !important;
+  border-color: #00d4d4 !important;
 }
 
 @media (max-width: 768px) {
