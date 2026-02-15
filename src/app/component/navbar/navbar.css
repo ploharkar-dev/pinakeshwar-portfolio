@@ -88,13 +88,13 @@
 }
 
 .border-secondary {
-  border-color: rgba(233, 236, 239, 0.2) !important;
+  border-color: rgb(252, 252, 252) !important;
 }
 
 @media (max-width: 991.98px) {
   .navbar-collapse {
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(233, 236, 239, 0.1);
+    border-top: 1px solid rgb(255, 255, 255);
   }
 
   .navbar-nav {
