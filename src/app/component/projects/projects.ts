@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './projects.html',
-  styleUrl: './projects.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './projects.css'
 })
 export class ProjectsComponent {}

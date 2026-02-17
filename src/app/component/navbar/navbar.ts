@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ChangeDetectionStrategy, signal, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -6,84 +6,50 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Navbar implements OnInit, OnDestroy {
-  activeSection = signal('home');
-  menuOpen = signal(false);
+export class Navbar implements OnInit {
+  activeSection: string = 'home';
   private isBrowser: boolean;
-  private scrollListener: (() => void) | null = null;
-  private scrollTimeout: number | null = null;
 
-  constructor(
-    @Inject(PLATFORM_ID) platformId: Object,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit() {
     if (this.isBrowser) {
       this.detectActiveSection();
-      this.setupScrollListener();
     }
   }
 
-  ngOnDestroy() {
-    this.removeScrollListener();
-  }
-
-  private setupScrollListener() {
-    if (!this.isBrowser) return;
-    
-    this.scrollListener = () => {
-      if (this.scrollTimeout !== null) {
-        window.clearTimeout(this.scrollTimeout);
-      }
-      this.scrollTimeout = window.setTimeout(() => {
-        this.detectActiveSection();
-        this.cdr.markForCheck();
-      }, 150);
-    };
-    
-    window.addEventListener('scroll', this.scrollListener, { passive: true });
-  }
-
-  private removeScrollListener() {
-    if (this.scrollListener) {
-      window.removeEventListener('scroll', this.scrollListener);
+  @HostListener('window:scroll', [])
+  onScroll() {
+    if (this.isBrowser) {
+      this.detectActiveSection();
     }
-    if (this.scrollTimeout !== null) {
-      window.clearTimeout(this.scrollTimeout);
-    }
-  }
-
-  toggleMenu() {
-    this.menuOpen.update(v => !v);
-  }
-
-  closeMenu() {
-    this.menuOpen.set(false);
   }
 
   setActive(section: string) {
-    this.activeSection.set(section);
-    this.menuOpen.set(false);
+    this.activeSection = section;
   }
 
   detectActiveSection() {
     const sections = ['introduction', 'experience', 'projects', 'education', 'awards', 'contact'];
     const sectionNames = ['home', 'experience', 'projects', 'education', 'awards', 'contact'];
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    for (let i = 0; i < sections.length; i++) {
-      const element = document.getElementById(sections[i]);
+    sections.forEach((section, index) => {
+      const element = document.querySelector(`#${section}`);
       if (element) {
         const rect = element.getBoundingClientRect();
         if (rect.top <= 100 && rect.bottom >= 100) {
-          this.activeSection.set(sectionNames[i]);
-          return;
+          this.activeSection = sectionNames[index];
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`a[href="#${sectionNames[index]}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
         }
       }
-    }
+    });
   }
 }
