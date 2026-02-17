@@ -4,8 +4,9 @@
   functions = "functions"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "20"
   NODE_ENV = "production"
+  NPM_CONFIG_PRODUCTION = "false"
   NODE_OPTIONS = "--max_old_space_size=4096"
 
 [context.production]
