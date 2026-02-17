@@ -2,6 +2,11 @@
   command = "npm run build:prod"
   publish = "dist/myprofile/browser"
   environment = { NODE_VERSION = "20" }
+  functions = "functions"
+
+[build.environment]
+  NODE_ENV = "production"
+  NODE_OPTIONS = "--max_old_space_size=4096"
 
 [context.production]
   command = "npm run build:prod"
@@ -29,25 +34,55 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-# Cache strategy for assets
+# Cache strategy for assets with hashing (1 year cache)
 [[headers]]
-  for = "/assets/*"
+  for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
 
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
 
 [[headers]]
-  for = "/*.js"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# No cache for HTML files
+# SVG optimization
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml; charset=utf-8"
+
+# No cache for HTML files (always check for updates)
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "text/html; charset=utf-8"
+
+# Fonts with long cache
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Compression (Netlify handles gzip/brotli automatically)
+# Enable for all text-based content
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Encoding = "gzip"
+
+# Performance optimization
+[functions]
+  directory = "functions"
+  node_bundler = "esbuild"
