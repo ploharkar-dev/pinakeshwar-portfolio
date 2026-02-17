@@ -22,7 +22,6 @@
   publish = "dist/myprofile/browser"
 
 # SPA routing - redirect all requests to index.html for Angular routing
-# This must come before other redirects
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -45,13 +44,11 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "application/javascript; charset=utf-8"
 
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "text/css; charset=utf-8"
 
 [[headers]]
   for = "/assets/*"
@@ -63,14 +60,12 @@
   for = "/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "image/svg+xml; charset=utf-8"
 
 # No cache for HTML files (always check for updates)
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    Content-Type = "text/html; charset=utf-8"
 
 # Fonts with long cache
 [[headers]]
